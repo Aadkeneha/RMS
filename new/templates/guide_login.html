@@ -1,0 +1,79 @@
+{% extends 'index.html' %}
+
+{% block content %}
+{% for message in messages %}
+<p>{{message}}</p>
+{% endfor %}
+<form role="form" method="POST" action="{%url 'guide_login'%}">
+{% csrf_token %}
+
+            <div class="card card-login card-hidden">
+              <div class="card-header card-header-rose text-center">
+                <h4 class="card-title">
+                  Login
+                </h4>
+                <div class="social-line">
+                  <a style="padding-left:25px;" href="/" class="btn btn-just-icon btn-link btn-white">
+
+                    <i class="fa fa-user" ></i>
+                  </a>
+
+                  <a style="padding-left:25px;" href="/group_login.html" class="btn btn-just-icon btn-link btn-white">
+                    <i class="fa fa-users"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="card-body ">
+                <p class="card-description text-center">
+
+
+                    <span>
+                       login as: <strong>Guide</strong>
+                    </span>
+
+
+                </p>
+
+                <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons">face</i>
+                      </span>
+                    </div>
+                    <input type="text" name="username" placeholder="Guide name" class="form-control"  required="">
+                  </div>
+                </span>
+
+                <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons">lock_outline</i>
+                      </span>
+                    </div>
+                    <input type="password" name="password" placeholder="Password" class="form-control" required="">
+                  </div>
+                </span>
+
+
+              </div>
+              <div class="card-footer justify-content-center">
+                <button type="submit" name="login" class="btn btn-primary my-4">Login</button>
+              </div>
+
+              <div class="form-check text-center">
+                <label class="form-check-label">
+                  <a>Don't have an account?</a>
+                  <a
+                     href="guide_register.html">Register</a>
+                </label>
+              </div>
+
+              <br />
+
+            </div>
+
+          </form>
+
+{% endblock %}

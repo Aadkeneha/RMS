@@ -1,0 +1,155 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<form role="form" method="POST" action="{% url 'guide_register'%}">
+            {% csrf_token %}
+
+
+            <div class="card card-login card-hidden">
+              <div class="card-header card-header-rose text-center">
+                <h4 class="card-title">
+                  Registration
+                </h4>
+                <div class="social-line">
+                  <a style="padding-left:25px;" href=" " class="btn btn-just-icon btn-link btn-white">
+
+                    <i class="fa fa-user" ></i>
+                  </a>
+
+                  <a style="padding-left:25px;" href="group_register.html" class="btn btn-just-icon btn-link btn-white">
+                    <i class="fa fa-users"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="card-body ">
+                <p class="card-description text-center">
+                    <span>
+                       Register as: <strong>Guide</strong>
+                    </span>
+                </p>
+
+                <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-user"></i>
+                      </span>
+                    </div>
+                    <input type="text" name="guide" placeholder="Guide name" class="form-control"  required="">
+                  </div>
+                </span>
+
+                <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-phone"></i>
+                      </span>
+                    </div>
+                    <input type="text" name="m_g" placeholder="Mobile number" class="form-control" required>
+                  </div>
+                </span>
+
+                <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-envelope"></i>
+                      </span>
+                    </div>
+                    <input type="email" name="eid_g" placeholder="Email Id" class="form-control" required="">
+                  </div>
+                </span>
+
+                <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-users"></i>
+                      </span>
+                    </div>
+                    <input type="number" name="total_grps" placeholder="Total number of groups" class="form-control" required="">
+                  </div>
+                </span>
+
+                <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-id-card"></i>
+                      </span>
+                    </div>
+                    <input type="text" name="dept" placeholder="Department" class="form-control" required="">
+                  </div>
+                </span>
+
+                <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-book"></i>
+                      </span>
+                    </div>
+                    <input type="text" name="sub" placeholder="Subject" class="form-control" required="">
+                  </div>
+                </span>
+
+
+                <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-unlock"></i>
+                      </span>
+                    </div>
+                    <input type="password" name="pass_g1" placeholder="Create Password" id="password" class="form-control" required="">
+                  </div>
+                </span>
+
+                <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-lock"></i>
+                      </span>
+                    </div>
+                    <input type="password" name="pass_g2" placeholder="Confirm Password" id="confirm_password" class="form-control" required="">
+                  </div>
+                </span>
+
+
+              </div>
+              <div class="card-footer justify-content-center">
+                <button type="submit" name="login" class="btn btn-primary my-4">Register</button>
+              </div>
+
+              <div class="form-check text-center">
+                <label class="form-check-label">
+                  <a>Already have an account?</a>
+                  <a
+                     href="/">Login</a>
+                </label>
+              </div>
+
+              <br />
+
+            </div>
+          </form>
+
+<script>
+  var password = document.getElementById("password")
+  , confirm_password = document.getElementById("confirm_password");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+</script>
+{% endblock %}

@@ -1,0 +1,195 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+
+<form action= "{% url 'group_register' %}" roll = "form" method="POST" >
+            {% csrf_token %}
+
+
+
+            <div class="card card-login card-hidden">
+              <div class="card-header card-header-rose text-center">
+                <h4 class="card-title">
+                  Registration
+                </h4>
+                <div class="social-line">
+                  <a style="padding-left:25px;" href="guide_register.html" class="btn btn-just-icon btn-link btn-white">
+
+                    <i class="fa fa-user" ></i>
+                  </a>
+
+                  <a style="padding-left:25px;" href="group_register.html " class="btn btn-just-icon btn-link btn-white">
+                    <i class="fa fa-users"></i>
+                  </a>
+                </div>
+              </div>
+              <div class="card-body ">
+                <p class="card-description text-center">
+                    <span>
+                       Register as: <strong>Group</strong>
+                    </span>
+                </p>
+
+                <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-users"></i>
+                      </span>
+                    </div>
+                    <input type="text" name="grp_number" placeholder="Group number" class="form-control"  required="">
+                  </div>
+                </span>
+
+                <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-user"></i>
+                      </span>
+                    </div>
+
+                    <select name="guide" required="" id="guide" class="form-control">
+                      {% for i in guide %}
+                        <option value="{{i.guide}}">{{i.guide}}</option>
+                       {% endfor %}
+                     </select>
+
+                  </div>
+                </span>
+
+                <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons">dashboard</i>
+                      </span>
+                    </div>
+                    <input type="text" name="proj_name" placeholder="Project name" class="form-control" required="">
+                  </div>
+                </span>
+
+                <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-user-plus"></i>
+                      </span>
+                    </div>
+                    <input type="text" name="mem1" placeholder="Member1 name" class="form-control" required="">
+                  </div>
+                </span>
+
+                <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-user-plus"></i>
+                      </span>
+                    </div>
+                    <input type="text" name="mem2" placeholder="Member2 name" class="form-control" required="">
+                  </div>
+                </span>
+
+                <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-envelope"></i>
+                      </span>
+                    </div>
+                    <input type="email" name="eid1" placeholder="Email of Member1" class="form-control" required="">
+                  </div>
+                </span>
+
+                <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-envelope"></i>
+                      </span>
+                    </div>
+                    <input type="email" name="eid2" placeholder="Email of Member2" class="form-control" required="">
+                  </div>
+                </span>
+
+                <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-phone"></i>
+                      </span>
+                    </div>
+                    <input type="text" name="mob_number1" placeholder="Contact of Member1" class="form-control" required="">
+                  </div>
+                </span>
+
+                <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-phone"></i>
+                      </span>
+                    </div>
+                    <input type="text" name="mob_number2" placeholder="Contact of Member2" class="form-control" required="">
+                  </div>
+                </span>
+
+                <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-unlock"></i>
+                      </span>
+                    </div>
+                    <input type="password" name="pass_p1" placeholder="Create Password" id="password" class="form-control" required="">
+                  </div>
+                </span>
+
+                <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fa fa-lock"></i>
+                      </span>
+                    </div>
+                    <input type="password" name="pass_p2" placeholder="Confirm Password" id="confirm_password" class="form-control" required="">
+                  </div>
+                </span>
+
+
+              </div>
+              <div class="card-footer justify-content-center">
+                <button type="submit" name="login" class="btn btn-primary my-4">Register</button>
+              </div>
+
+              <div class="form-check text-center">
+                <label class="form-check-label">
+                  <a>Already have an account?</a>
+                  <a
+                     href="group_login.html">Login</a>
+                </label>
+              </div>
+
+              <br />
+
+            </div>
+          </form>
+<script>
+  var password = document.getElementById("password")
+  , confirm_password = document.getElementById("confirm_password");
+
+function validatePassword(){
+  if(password.value != confirm_password.value) {
+    confirm_password.setCustomValidity("Passwords Don't Match");
+  } else {
+    confirm_password.setCustomValidity('');
+  }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+</script>
+
+{% endblock %}
