@@ -10,6 +10,7 @@ group_guide = ""
 cpunt_reg = ""
 flag_s = False
 rad = ""
+
 def guide_register(request):
    if request.method == "POST":
         guide = request.POST.get('guide', False)
@@ -178,8 +179,6 @@ def group_account(request):
     global user_group,rad
     if user_group != "":
         gr = models.Project_Group.objects.filter(grp_number = user_group)
-    else:
-        gr=""
 
         if request.method == "POST":
             f1 = request.FILES.get('f1')
