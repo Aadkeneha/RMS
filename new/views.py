@@ -175,10 +175,11 @@ def index(request):
 
 def group_account(request):
     st = "Null"
-    stu={}
     global user_group,rad
     if user_group != "":
         gr = models.Project_Group.objects.filter(grp_number = user_group)
+    else:
+        gr=""
 
         if request.method == "POST":
             f1 = request.FILES.get('f1')
