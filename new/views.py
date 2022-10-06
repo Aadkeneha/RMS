@@ -10,7 +10,6 @@ group_guide = ""
 cpunt_reg = ""
 flag_s = False
 rad = ""
-stu = {}
 def guide_register(request):
    if request.method == "POST":
         guide = request.POST.get('guide', False)
@@ -35,7 +34,6 @@ def guide_register(request):
 
 
 def group_register(request):
-    global stu
     submit = models.Project_Group.objects.all()
     prof = models.Project_Guide.objects.all()
 
@@ -110,7 +108,7 @@ def group_login(request):
 
 # need to change after adtion of neha wala front end ka part
 def submitted_projects(request):
-    global user_guide,flag_s,stu
+    global user_guide,flag_s
     submit = models.Project_Group.objects.filter(status = "N",guide = user_guide,flag = True )
 
     lst = models.Project_Guide.objects.filter(guide=user_guide)
@@ -148,7 +146,7 @@ def submitted_projects(request):
 
 #final for registered Groups
 def registered_groups(request):
-    global user_guide,stu
+    global user_guide
     all = models.Project_Group.objects.filter(guide = user_guide)
     lst = models.Project_Guide.objects.filter(guide=user_guide)
 
@@ -161,7 +159,6 @@ def registered_groups(request):
 
 #temp code for all projects remaining for subject wise diaplay ka pattern
 def all_projects(request):
-    global stu
     submit = models.Project_Group.objects.filter(status = "A",flag = True)
     stu = {
         'grp': submit
@@ -178,7 +175,7 @@ def index(request):
 
 def group_account(request):
     st = "Null"
-    global user_group,rad,stu
+    global user_group,rad
     if user_group != "":
         gr = models.Project_Group.objects.filter(grp_number = user_group)
 
@@ -216,12 +213,11 @@ def group_account(request):
             "st": st,
             "fg": fg
         }
-
     return render(request, 'group_account.html',stu)
 
 # almost final
 def guide_account(request):
-    global user_guide,flag_s,stu
+    global user_guide,flag_s
     if user_guide != "":
         gd = models.Project_Guide.objects.filter(guide = user_guide)
         count = Project_Group.objects.filter(guide = user_guide).count()
@@ -244,7 +240,7 @@ def guide_account(request):
 
 def group_dashboard(request):
     st = "Null"
-    global user_group, rad,stu
+    global user_group, rad
     if user_group != "":
         gr = models.Project_Group.objects.filter(grp_number=user_group)
         for i in gr:
@@ -259,11 +255,6 @@ def group_dashboard(request):
                 fg = "Submitted"
             elif i.flag == False:
                 fg ="Not Submitted"
-
-
-
-
-
         stu = {
             "grp_number": gr,
             "guide": gd,
@@ -273,7 +264,7 @@ def group_dashboard(request):
     return render(request,'group_dashboard.html',stu)
 
 def group_edit(request):
-    global user_group,stu
+    global user_group
     if user_group != "":
         gr = models.Project_Group.objects.filter(grp_number = user_group)
         for i in gr:
@@ -299,7 +290,7 @@ def group_edit(request):
     return render(request,'group_edit.html',stu)
 
 def guide_edit(request):
-    global user_guide, rad,stu
+    global user_guide, rad
     if user_guide!= "":
         gr = models.Project_Guide.objects.filter(guide=user_guide)
         for i in gr:
