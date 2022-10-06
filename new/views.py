@@ -219,6 +219,7 @@ def group_account(request):
 # almost final
 def guide_account(request):
     global user_guide,flag_s
+    stu = {}
     if user_guide != "":
         gd = models.Project_Guide.objects.filter(guide = user_guide)
         count = Project_Group.objects.filter(guide = user_guide).count()
@@ -267,6 +268,7 @@ def group_dashboard(request):
 
 def group_edit(request):
     global user_group
+    stu = {}
     if user_group != "":
         gr = models.Project_Group.objects.filter(grp_number = user_group)
         for i in gr:
@@ -293,6 +295,7 @@ def group_edit(request):
 
 def guide_edit(request):
     global user_guide, rad
+    stu = {}
     if user_guide!= "":
         gr = models.Project_Guide.objects.filter(guide=user_guide)
         for i in gr:
