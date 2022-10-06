@@ -241,6 +241,7 @@ def guide_account(request):
 
 def group_dashboard(request):
     st = "Null"
+    stu = {}
     global user_group, rad
     if user_group != "":
         gr = models.Project_Group.objects.filter(grp_number=user_group)
