@@ -207,7 +207,7 @@ def group_account(request):
                 fg = "Submitted"
             elif i.flag == False:
                 fg = "Not Submitted"
-        stu = {
+    stu = {
             "grp_number": gr,
             "guide": gd,
             "st": st,
